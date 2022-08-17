@@ -9,6 +9,7 @@ export function Register() {
     confirmPassword: "",
   });
 
+  const [test, setTest] = useState([]);
   const [bool, setBool] = useState({
     flag: false,
   });
@@ -30,11 +31,12 @@ export function Register() {
   };
 
   const userByID = (e) => {
+    e.preventDefault();
     var x;
     fetch("http://localhost:5099/getuserbyid/admin1")
       .then((response) => response.json())
-      .then((json) => console.warn(json));
-    //alert(json);
+      .then((json) => setTest(json));
+    alert(JSON.stringify(test));
   };
   const registerUser = (e) => {
     fetch("http://localhost:5099/adduser", {
@@ -176,6 +178,7 @@ export function Register() {
 
         {validateSubmitbutton()}
         <button onClick={userByID}>fetch</button>
+        {JSON.stringify(test)}
       </form>
     </div>
   );

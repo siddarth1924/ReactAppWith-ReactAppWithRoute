@@ -12,7 +12,7 @@ export function Login() {
   });
 
   const [test, setTest] = useState({
-    use: [],
+    user: [],
     name: "",
     emailID: "",
     loginID: "",
@@ -45,11 +45,11 @@ export function Login() {
   };*/
 
   const loginUser = (e) => {
-    var url = "http://localhost:5099/getuserbyid/nime/" + input.loginID;
+    var url = "http://localhost:5099/getuserbyid/admin1";
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ use: data });
+        this.setTest({ user: data });
       });
     alert(test.password);
   };
